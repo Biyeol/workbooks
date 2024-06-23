@@ -1,0 +1,42 @@
+import React from "react";
+import { Link } from "react-router-dom";
+
+const BlogCard = ({ image, date, title, description, author, texted }) => {
+  return (
+    <>
+      <Link
+        to={`/movie/${texted}`}
+        onClick={() => {
+          window.scrollTo(0, 0);
+          // window.scroll({
+          //   top: 0,
+          //   left: 0,
+          //   behavior: "smooth",
+          // });
+        }}
+        state={{ image, date, title, description, author, texted }}
+      >
+        <div className="p-4 shadow-lg transition-all duration-500 hover:shadow-xl dark:bg-slate-950 dark:text-white">
+          <div className="overflow-hidden">
+            <img
+              src={image}
+              alt="No image"
+              className="mx-auto h-auto w-full object-cover transition duration-700 hover:skew-x-2 hover:scale-110 cursor-pointer"
+            />
+          </div>
+          <div className="flex justify-between pt-2 text-slate-600">
+            <p>{date}</p>
+            <p className="line-clamp-1">얼마 {author}</p>
+          </div>
+          <div className="space-y-2 py-3">
+            <h className="font-bold text-2xl">{texted}</h>
+            <h1 className="line-clamp-1 font-bold">{title}</h1>
+            <p className="line-clamp-2">{description}</p>
+          </div>
+        </div>
+      </Link>
+    </>
+  );
+};
+
+export default BlogCard;
